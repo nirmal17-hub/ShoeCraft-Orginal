@@ -12,7 +12,7 @@ import {
 
 function Register() {
   const navigate = useNavigate()
-
+  const API_URL = import.meta.env.VITE_API_URL
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -34,7 +34,7 @@ function Register() {
         throw new Error('Passwords do not match.')
       }
 
-      const database = await fetch(`http://localhost:3000/users`)
+      const database = await fetch(`${API_URL}/users`)
 
       if (!database.ok) {
         throw new Error('Could not connect to the server.')
