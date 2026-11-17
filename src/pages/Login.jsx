@@ -11,6 +11,7 @@ import {
 } from 'lucide-react'
 
 function Login() {
+  const API_URL = import.meta.env.VITE_API_URL
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -25,7 +26,7 @@ function Login() {
     setLoading(true)
 
     try {
-      const database = await fetch('http://localhost:3000/users')
+      const database = await fetch(`${API_URL}/users`)
 
       if (!database.ok) {
         throw new Error('Could not connect to the server')
